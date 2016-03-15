@@ -29,12 +29,12 @@ class OAIResponse(object):
     @property
     def raw(self):
         """The server's response as unicode."""
-        return self.http_response.text
+        return self.http_response.content
 
     @property
     def xml(self):
         """The server's response as parsed XML."""
-        return etree.XML(self.http_response.text.encode("utf8"),
+        return etree.XML(self.http_response.content,
                          parser=XMLParser)
 
     def __repr__(self):
